@@ -19,7 +19,7 @@ class App extends React.Component {
                 <Link className="nav-link" to="/TicTacToe">Kółko i krzyżyk</Link>
               </Nav.Item>
               <Nav.Item>
-                <Link className="nav-link" to="/TicTacToe" disabled>W przygotowaniu</Link>
+                <Link className="nav-link" to="/other" disabled>W przygotowaniu</Link>
               </Nav.Item>
             </Nav>
         </div>
