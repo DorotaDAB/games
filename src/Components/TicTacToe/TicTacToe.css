@@ -55,3 +55,9 @@
 .btn-danger {
     align-content: center;
 }
+
+@media (min-width: 1440px) {
+    .game-board {
+        font-size: 5vw;  
+    }
+}

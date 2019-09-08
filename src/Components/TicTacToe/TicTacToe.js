@@ -5,8 +5,8 @@ import { faCircle } from '../../../node_modules/@fortawesome/free-regular-svg-ic
 import { faTimes} from '../../../node_modules/@fortawesome/free-solid-svg-icons';
 
 class TicTacToe extends React.Component {
-	constructor(props) {
-        super(props);
+	constructor() {
+        super();
         
         this.state =  {
             player1: <FontAwesomeIcon icon={faCircle} />,
@@ -94,7 +94,7 @@ class TicTacToe extends React.Component {
     }
 
     endGame(selectedPlayer) {
-       selectedPlayer === this.state.player1 ? console.log('GRATULACJE! Wygrał gracz') : console.log('GRATULACJE! Wygrał gracz X');
+    //    selectedPlayer === this.state.player1 ? console.log('GRATULACJE! Wygrał gracz O') : console.log('GRATULACJE! Wygrał gracz X');
         this.setState({
             gameEnabled: false
         });
@@ -107,7 +107,7 @@ class TicTacToe extends React.Component {
             <div className="game-board">
                 { this.state.board.map((field, key) => { 
                 return (
-                    <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}> {/* zeby funkcja nie wdpdaa w infility-loop, to przeba zbindwać */}
+                    <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}>
                         <div className="game-board--field-content">{ field }</div>
                     </div>
                 );
