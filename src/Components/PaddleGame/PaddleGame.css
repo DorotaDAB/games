@@ -1,0 +1,17 @@
+.paddle-board {
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+}
+
+.current-score {
+    font-size: 28px;
+}
+
+.best-score {
+    font-size: 34px;
+}
+
+canvas {
+    cursor: none;
+} 
