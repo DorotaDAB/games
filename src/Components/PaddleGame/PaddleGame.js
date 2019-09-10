@@ -10,8 +10,8 @@ class PaddleGame extends React.Component {
     this.game = {
       gameBoard: null,
       context: null,
-      ballX: 100,
-      ballY: 100,
+      ballX: 0,
+      ballY: 0,
       ballSpeedX: 5,
       ballSpeedY: 7,
       paddleWidth: 100,
@@ -23,7 +23,8 @@ class PaddleGame extends React.Component {
     this.state = {
       gameRefreshInterval: null,
       bounces: 0,
-      bestScore: localStorage.getItem("bestScore")
+      bestScore: localStorage.getItem("bestScore"),
+      isFullScreen: false,
     }
 
     this.updateAll = this.updateAll.bind(this);
@@ -77,14 +78,14 @@ class PaddleGame extends React.Component {
   setBestScore() {
     let bestScore = this.state.bestScore;
 
-    if (bestScore <= this.state.bounces) {
+    if (bestScore < this.state.bounces) {
       localStorage.setItem("bestScore", this.state.bounces);
       this.setState({bestScore});
     } 
   }
 
   printElements() {
-    this.game.context.fillStyle = 'black';
+    this.game.context.fillStyle = '#4B515D';
     this.game.context.fillRect(0,0, this.game.gameBoard.width, this.game.gameBoard.height)
   
     this.game.context.fillStyle = '#66ffff';
@@ -93,6 +94,7 @@ class PaddleGame extends React.Component {
     this.game.context.fillStyle = '#ffcccc';
     this.game.context.beginPath();
     this.game.context.arc(this.game.ballX, this.game.ballY, 10, 0, Math.PI * 2, true);
+  
     this.game.context.fill();
   }
   
@@ -108,16 +110,28 @@ class PaddleGame extends React.Component {
   }
   
   resetBall() {
-    this.game.ballX = this.game.gameBoard.width / 2;
-    this.game.ballY = this.game.gameBoard.height / 4;
+    this.game.ballX = 0;
+    this.game.ballY = 0;
+  }
+
+  toggleFullScreen() {
+    this.setState({isFullScreen: !this.state.isFullScreen})
   }
 
   render() {
     return (
       <div className="paddle-board">
-        <p className="current-score"> Score: {this.state.bounces}</p>
-        <canvas ref="canvas" width="800" height="600"></canvas>
         <p className="best-score"> <FontAwesomeIcon icon={faTrophy} /> Best score: {localStorage.getItem("bestScore")} <FontAwesomeIcon icon={faTrophy} /> </p>
+        <p className="current-score"> Your score: {this.state.bounces}</p>
+        <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
+          className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
+          ref="canvas" 
+          width="700" 
+          height="500">
+        </canvas>
+
+
+        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>Double-Click for FULL SCREEN</button>
       </div>
     );
   } 

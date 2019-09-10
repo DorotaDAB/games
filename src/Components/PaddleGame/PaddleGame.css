@@ -1,17 +1,31 @@
 .paddle-board {
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
+    color:#4B515D;
+    margin-bottom: 1%;
 }
 
 .current-score {
-    font-size: 28px;
+    font-size: 1.5vw;
 }
 
 .best-score {
-    font-size: 34px;
+    margin-top: 2%;
+    font-size: 2vw;
 }
 
 canvas {
+    border-radius: 10px;
+    border: solid black;
     cursor: none;
 } 
+
+.paddle-board--full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './TicTacToe.css';
-import { FontAwesomeIcon } from '../../../node_modules/@fortawesome/react-fontawesome';
-import { faCircle } from '../../../node_modules/@fortawesome/free-regular-svg-icons';
-import { faTimes} from '../../../node_modules/@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faTimes , faTrophy} from '@fortawesome/free-solid-svg-icons';
 
 class TicTacToe extends React.Component {
 	constructor() {
@@ -17,7 +17,8 @@ class TicTacToe extends React.Component {
                 '', '', '',
                 '', '', '',
             ],
-            gameEnabled: true
+            gameEnabled: true,
+            winner: "Who is the winner?"
         }
     }
 
@@ -57,23 +58,54 @@ class TicTacToe extends React.Component {
         if (this.state.turn === 8) {this.isDraw(); return}
     }
 
-    onFieldClick(index) {
-        if (!this.state.gameEnabled === true) { return };
-        if (this.state.board[index] !== '') { alert('Miejsce zajęte. Spróbuj jeszcze raz.'); return };
+    computerTurn() {
 
-        let selectedPlayerTag = this.state.turn %2 === 0 ? this.state.player1 : this.state.player2;
+        let board = this.state.board;
+       
+        function _getRandomInt() {
+          let min = Math.ceil(0);
+          let max = Math.floor(8);
+    
+          return Math.floor(Math.random() * (max - min -1)) + min;
+        }
+    
+        let computerFieldSelected = _getRandomInt();
+    
+        if (this.state.gameEnabled && board[computerFieldSelected] === '') {
+          board[computerFieldSelected] = this.state.player2
+        } else if (this.state.gameEnabled && this.state.board.indexOf('') >= 0) {
+          this.computerTurn();
+          return;
+        } else return;
+        
+        let turnNumber = this.state.turn;
+        let nextTurnNumber = ++turnNumber;
+    
+        this.setState({
+          turn: nextTurnNumber,
+          board
+        });
+    
+        this.checkGameStatus(this.state.player2);
+      }
+
+    async onFieldClick(index) {
+
+        if (!this.state.gameEnabled === true) { return };
+        if (this.state.board[index] !== '') { alert('Try again'); return };
+
+        let board = this.state.board;
+        board[index] = this.state.player1;
+
 
         let turnNumber = this.state.turn;
         let nextTurnNumber = ++turnNumber;
 
-        let board = this.state.board;
-        board[index] = selectedPlayerTag;
-
         this.setState({
             turn: nextTurnNumber,
-            board: board    
-        })
-        this.checkGameStatus(selectedPlayerTag);
+            board
+          },  this.computerTurn)
+        this.checkGameStatus(this.state.player1);
     }
 
     resetGameBoard() {
@@ -84,21 +116,22 @@ class TicTacToe extends React.Component {
                 '', '', '',
             ],
             turn: 0,
-            gameEnabled: true
+            gameEnabled: true,
+            winner: "Who is the winner?"
         })
     }
 
     isDraw() {
-        console.log('Remis'); 
-        alert('Remis');
+        this.setState(
+            {winner: 'DRAW. try again'}
+        )
     }
 
     endGame(selectedPlayer) {
-    //    selectedPlayer === this.state.player1 ? console.log('GRATULACJE! Wygrał gracz O') : console.log('GRATULACJE! Wygrał gracz X');
         this.setState({
-            gameEnabled: false
+            gameEnabled: false,
+            winner: ['The winner is: ',selectedPlayer]
         });
-        selectedPlayer === this.state.player1 ? alert('GRATULACJE! Wygrał gracz O') : alert('GRATULACJE! Wygrał gracz X');
     }
 
 	render() {
@@ -113,7 +146,8 @@ class TicTacToe extends React.Component {
                 );
                 }) }
             </div>
-            <button onClick={this.resetGameBoard.bind(this)} className="btn btn-danger">Start again</button>
+            <p> <FontAwesomeIcon icon={faTrophy} /> {this.state.winner} <FontAwesomeIcon icon={faTrophy} /></p>
+            <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">Start again</button>
         </div>
     )}
 }

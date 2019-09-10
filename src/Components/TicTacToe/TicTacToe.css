@@ -1,15 +1,16 @@
 .ttt-container {
-    height: 80%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-content: space-around;
     justify-content: center;
     align-items: center;
     margin-right: 0%;
+    font-size: 3vw;
 }
 
 .game-board {
-    width: 50%;
+    width: 40%;
     padding: 0%;
     margin: 5% 25% 5% 25%;
     display: flex;
@@ -52,9 +53,11 @@
     padding-bottom: 100%;
 }
 
-.btn-danger {
+.btn-dark {
     align-content: center;
+    font-size: 1.5vw;
 }
+
 
 @media (min-width: 1440px) {
     .game-board {

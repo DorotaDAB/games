@@ -7,8 +7,8 @@ Application contains various browser-based games.
 **Available games:**
 * Tic-Tac-Toe
 
-![image](./public/readme-graphics/tic-tac-toe.png)
+![image](./src/Graphics/tic-tac-toe.png)
 
 * Paddle-game
 
-![image](./public/readme-graphics/paddle-game.png)
+![image](./src/Graphics/paddle-game.png)
