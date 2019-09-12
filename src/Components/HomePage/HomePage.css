@@ -6,15 +6,32 @@
     color:#4B515D;
     font-size: 3vw;
 }
+.games-choice p {
+    font-size: 1.5vw;
+}
 
 .games-img {
     display: flex;
     text-align: center;
     justify-content: space-between;
-    margin-top: 2%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .games-img img {
-    width: 25vw;
-    padding: 2%
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.games-img img:hover {
+   border: solid #ffcccc 3px;
+   border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .games-img img {
+        width: 300px;
+        height: 300px;
+    }
 }

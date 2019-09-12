@@ -2,12 +2,21 @@ import React from 'react';
 import './PaddleGame.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import lang from '../../assets/lang/lang.json';
 
 class PaddleGame extends React.Component {
   constructor() {
     super();
+    
+    this.state = {
+      gameRefreshInterval: null,
+      bounces: 0,
+      bestScore: localStorage.getItem("bestScore"),
+      isFullScreen: false,
+    }
 
     this.game = {
+      gameSpeed: 1000,
       gameBoard: null,
       context: null,
       ballX: 0,
@@ -20,13 +29,6 @@ class PaddleGame extends React.Component {
       paddleX: 400,
     }
 
-    this.state = {
-      gameRefreshInterval: null,
-      bounces: 0,
-      bestScore: localStorage.getItem("bestScore"),
-      isFullScreen: false,
-    }
-
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
   }
@@ -34,7 +36,8 @@ class PaddleGame extends React.Component {
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;
     this.game.context = this.refs.canvas.getContext('2d');
-    this.setState({gameRefreshInterval: setInterval(this.updateAll, 1000/30)});
+    this.printElements();
+    this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
     this.refs.canvas.addEventListener('mousemove', this.updateMousePosition)
   }
 
@@ -55,6 +58,7 @@ class PaddleGame extends React.Component {
     if(this.game.ballY < 0) {
       this.game.ballSpeedY *= -1;
     }
+
     if(this.game.ballY > this.game.gameBoard.height) {
       this.resetBall();
       this.setState({bounces: 0})
@@ -70,11 +74,9 @@ class PaddleGame extends React.Component {
         this.game.ballX > paddleLeftEdgeX &&
         this.game.ballX < paddleRightEdgeX) {
           this.game.ballSpeedY *= -1;
-          this.setState({bounces: this.state.bounces + 1});
-          this.setBestScore();
         }
   }
-
+  
   setBestScore() {
     let bestScore = this.state.bestScore;
 
@@ -99,6 +101,7 @@ class PaddleGame extends React.Component {
   }
   
   updateAll() {
+    this.game.gameSpeed = this.game.gameSpeed*1;
     this.printElements();
     this.updateDirection();
   }
@@ -119,19 +122,24 @@ class PaddleGame extends React.Component {
   }
 
   render() {
+
     return (
       <div className="paddle-board">
-        <p className="best-score"> <FontAwesomeIcon icon={faTrophy} /> Best score: {localStorage.getItem("bestScore")} <FontAwesomeIcon icon={faTrophy} /> </p>
-        <p className="current-score"> Your score: {this.state.bounces}</p>
+        <p className="best-score"> 
+          <FontAwesomeIcon icon={faTrophy} /> 
+          {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
+          <FontAwesomeIcon icon={faTrophy} /> 
+        </p>
+        <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
         <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
           ref="canvas" 
           width="700" 
           height="500">
         </canvas>
-
-
-        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>Double-Click for FULL SCREEN</button>
+        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>
+          {lang[localStorage.getItem('lang')].fullScrn}
+        </button>
       </div>
     );
   } 

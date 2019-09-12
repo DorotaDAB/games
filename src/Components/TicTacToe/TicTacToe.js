@@ -1,5 +1,6 @@
 import React from 'react';
 import './TicTacToe.css';
+import lang from '../../assets/lang/lang.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTimes , faTrophy} from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +19,7 @@ class TicTacToe extends React.Component {
                 '', '', '',
             ],
             gameEnabled: true,
-            winner: "Who is the winner?"
+            winner: lang[localStorage.getItem('lang')].whoIsWinner
         }
     }
 
@@ -117,20 +118,20 @@ class TicTacToe extends React.Component {
             ],
             turn: 0,
             gameEnabled: true,
-            winner: "Who is the winner?"
+            winner: lang[localStorage.getItem('lang')].whoIsWinner
         })
     }
 
     isDraw() {
         this.setState(
-            {winner: 'DRAW. try again'}
+            {winner: lang[localStorage.getItem('lang')].draw}
         )
     }
 
     endGame(selectedPlayer) {
         this.setState({
             gameEnabled: false,
-            winner: ['The winner is: ',selectedPlayer]
+            winner: [lang[localStorage.getItem('lang')].winner, selectedPlayer]
         });
     }
 
@@ -147,7 +148,7 @@ class TicTacToe extends React.Component {
                 }) }
             </div>
             <p> <FontAwesomeIcon icon={faTrophy} /> {this.state.winner} <FontAwesomeIcon icon={faTrophy} /></p>
-            <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">Start again</button>
+            <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">{lang[localStorage.getItem('lang')].startAgain}</button>
         </div>
     )}
 }
