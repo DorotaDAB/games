@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaddleGame.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+  import { faTrophy, faPlay, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import lang from '../../assets/lang/lang.json';
 
 class PaddleGame extends React.Component {
@@ -175,9 +175,27 @@ class PaddleGame extends React.Component {
     let startStopGameBtn;
 
     if (!this.state.gameRefreshInterval) {
-      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>START GAME</button>
+      startStopGameBtn = <div className="start-stop">
+        <div className="start-stop--narrow">
+          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
+          <FontAwesomeIcon icon={faPlay} /></button>
+        </div>
+        <div className="start-stop--wide">
+          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
+          <FontAwesomeIcon icon={faPlay} /> {lang[localStorage.getItem('lang')].startGame} </button>
+          </div>
+        </div>
     } else {
-      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>STOP GAME</button>
+      startStopGameBtn = <div className="start-stop">
+        <div className="start-stop--narrow">
+          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
+          <FontAwesomeIcon icon={faPlay} /></button>
+        </div>
+        <div className="start-stop--wide">
+          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
+          <FontAwesomeIcon icon={faPlay} /> {lang[localStorage.getItem('lang')].stopGame} </button>
+          </div>
+        </div>
     }
 
     return (
@@ -188,15 +206,27 @@ class PaddleGame extends React.Component {
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
           ref="canvas" 
           width="700" 
-          height="500">
+          height="500"          >
         </canvas>
+        <div classname="paddle-board--buttons">
+          <div className="paddle-board--buttons--wide">
+            <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
+              <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
+              {lang[localStorage.getItem('lang')].fullScrn} </button>
+            {startStopGameBtn}
+            <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
+              <FontAwesomeIcon icon={faRedoAlt } /> 
+              {lang[localStorage.getItem('lang')].resetScore} </button>
+          </div>
 
-      <div className="paddle-board--buttons">
-        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>Full Screen</button>
-        {startStopGameBtn}
-        <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>Reset best score</button>
-      </div>
-
+          <div className="paddle-board--buttons--narrow">
+            <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
+              <FontAwesomeIcon icon={faExpandArrowsAlt } /> </button>
+            {startStopGameBtn}
+            <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
+              <FontAwesomeIcon icon={faRedoAlt } /> </button>
+          </div>
+        </div>
       </div>
     );
   } 

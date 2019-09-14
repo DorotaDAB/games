@@ -10,7 +10,7 @@
 .container--narrow-container {
   display: block;
  }
-
+ 
 .nav {
   justify-content: center;
   font-size: 3vw;
@@ -33,18 +33,18 @@
   .container--wide-container {
     display: block;
    }
-   
-   .container--narrow-container {
-     display: none;
-    }
+  
+  .container--narrow-container {
+    display: none;
+  }
 
-    .nav {
-      font-size: 1.5vw;
-    }
+  .nav {
+    font-size: 1.5vw;
+  }
 
-    .nav-item {
-      width: 25%;
-    }
+  .nav-item {
+    width: 25%;
+  }
 } 
 
 @media (min-width: 1440px) {

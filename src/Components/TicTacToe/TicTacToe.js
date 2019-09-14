@@ -3,7 +3,7 @@ import './TicTacToe.css';
 import lang from '../../assets/lang/lang.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import { faTimes , faTrophy} from '@fortawesome/free-solid-svg-icons';
+import { faTimes , faTrophy, faRedoAlt} from '@fortawesome/free-solid-svg-icons';
 
 class TicTacToe extends React.Component {
 	constructor() {
@@ -147,8 +147,18 @@ class TicTacToe extends React.Component {
                 );
                 }) }
             </div>
-            <p> <FontAwesomeIcon icon={faTrophy} /> {this.state.winner} <FontAwesomeIcon icon={faTrophy} /></p>
-            <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">{lang[localStorage.getItem('lang')].startAgain}</button>
+            <div className="ttt-container--narrow">
+                <p> <FontAwesomeIcon icon={faTrophy} /> {this.state.winner} <FontAwesomeIcon icon={faTrophy} /></p>
+                <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">
+                    <FontAwesomeIcon icon={faRedoAlt} /> </button>
+            </div>
+            
+            <div className="ttt-container--wide">
+                <p> <FontAwesomeIcon icon={faTrophy} /> {this.state.winner} <FontAwesomeIcon icon={faTrophy} /></p>
+                <button onClick={this.resetGameBoard.bind(this)} className="btn btn-dark">
+                    <FontAwesomeIcon icon={faRedoAlt} />
+                    {lang[localStorage.getItem('lang')].startAgain}</button>
+            </div>
         </div>
     )}
 }

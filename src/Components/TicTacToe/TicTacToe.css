@@ -9,6 +9,17 @@
     font-size: 3vw;
 }
 
+.ttt-container--narrow {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.ttt-container--wide {
+    display: none;
+}
+
 .game-board {
     width: 40%;
     padding: 0%;
@@ -58,6 +69,18 @@
     font-size: 1.5vw;
 }
 
+@media (min-width: 768px) {
+    .ttt-container--narrow {
+        display: none;
+    }
+    
+    .ttt-container--wide {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+}
 
 @media (min-width: 1440px) {
     .game-board {

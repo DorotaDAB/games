@@ -1,8 +1,27 @@
+.paddle-board--buttons--narrow {
+    display: flex;
+    align-items: center;
+    font-size: 2vw;
+} 
+
+.paddle-board--buttons--wide {
+    display: none;
+}
+
+.start-stop--narrow {
+    display: block;
+} 
+
+.start-stop--wide {
+    display: none;
+}
+
 .paddle-board {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
+    align-content: center;
     color:#4B515D;
     margin-bottom: 1%;
 }
@@ -10,11 +29,10 @@
 .paddle-board--buttons {
     display: flex;
     align-content: space-between;
-    font-size: 2vw;
 }
 
-.paddle-board--buttons button {
-    width: 20vw;
+button {
+    width: 10vw;
     margin: 2%;
 }
 
@@ -39,4 +57,29 @@ canvas {
     left: 0;
     width: 100vw;
     height: 100vh;
-  }
+}
+
+@media (min-width: 768px) {
+    .paddle-board--buttons--narrow {
+        display: none;
+    } 
+
+    .paddle-board--buttons--wide {
+        display: flex;
+        align-items: center;
+        font-size: 1.5vw;
+    }
+
+    .start-stop--narrow {
+        display: none;
+    } 
+
+    .start-stop--wide {
+        display: block;
+    }
+
+    button {
+        width: 20vw;
+        font-size: 1.5vw;
+    }
+}
