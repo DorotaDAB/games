@@ -82,18 +82,25 @@ class PaddleGame extends React.Component {
   }
 
   setLevel() {
-    if (this.state.bounces > 2 && this.state.bounces < 20) {
-      this.game.gameSpeed = 750;
+    if (this.state.bounces > 5 && this.state.bounces <= 10) {
+      this.game.gameSpeed = 800;
     }
-  
-    if (this.state.bounces >= 5) {
-      this.game.gameSpeed = 500 ;
+
+    if (this.state.bounces > 10 && this.state.bounces <= 15) {
+      this.game.gameSpeed = 600;
+    }
+
+    if (this.state.bounces > 15 && this.state.bounces <= 20) {
+      this.game.gameSpeed = 400;
+    }
+
+    if (this.state.bounces > 20) {
+      this.game.gameSpeed = 300;
     }
 
     clearInterval(this.state.gameRefreshInterval);
     this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
   }
-
 
   setBestScore() {
     let bestScore = this.state.bestScore;
@@ -158,14 +165,19 @@ class PaddleGame extends React.Component {
     }
   }
 
+  resetBestScore() {
+    localStorage.setItem('bestScore', '0');
+    this.setState({bounces: 0})
+  }
+
   render() {
 
     let startStopGameBtn;
 
     if (!this.state.gameRefreshInterval) {
-      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>{lang[localStorage.getItem('lang')].startGame}</button>
+      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>START GAME</button>
     } else {
-      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>{lang[localStorage.getItem('lang')].stopGame}</button>
+      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>STOP GAME</button>
     }
 
     return (
@@ -180,8 +192,9 @@ class PaddleGame extends React.Component {
         </canvas>
 
       <div className="paddle-board--buttons">
-        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>{lang[localStorage.getItem('lang')].fullScrn}</button>
+        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>Full Screen</button>
         {startStopGameBtn}
+        <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>Reset best score</button>
       </div>
 
       </div>
