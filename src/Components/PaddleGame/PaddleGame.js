@@ -29,6 +29,7 @@ class PaddleGame extends React.Component {
       paddleX: 400,
     }
 
+    this.setLevel = this.setLevel.bind(this);
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
   }
@@ -37,7 +38,6 @@ class PaddleGame extends React.Component {
     this.game.gameBoard = this.refs.canvas;
     this.game.context = this.refs.canvas.getContext('2d');
     this.printElements();
-    this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
     this.refs.canvas.addEventListener('mousemove', this.updateMousePosition)
   }
 
@@ -59,7 +59,8 @@ class PaddleGame extends React.Component {
       this.game.ballSpeedY *= -1;
     }
 
-    if(this.game.ballY > this.game.gameBoard.height) {
+    if (this.isBallOutside()) {
+      this.resetGameSpeed();
       this.resetBall();
       this.setState({bounces: 0})
     }
@@ -74,9 +75,26 @@ class PaddleGame extends React.Component {
         this.game.ballX > paddleLeftEdgeX &&
         this.game.ballX < paddleRightEdgeX) {
           this.game.ballSpeedY *= -1;
+          this.setState({bounces: this.state.bounces + 1});
+          this.setBestScore();
+          this.setLevel();
         }
   }
+
+  setLevel() {
+    if (this.state.bounces > 2 && this.state.bounces < 20) {
+      this.game.gameSpeed = 750;
+    }
   
+    if (this.state.bounces >= 5) {
+      this.game.gameSpeed = 500 ;
+    }
+
+    clearInterval(this.state.gameRefreshInterval);
+    this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+  }
+
+
   setBestScore() {
     let bestScore = this.state.bestScore;
 
@@ -101,7 +119,6 @@ class PaddleGame extends React.Component {
   }
   
   updateAll() {
-    this.game.gameSpeed = this.game.gameSpeed*1;
     this.printElements();
     this.updateDirection();
   }
@@ -111,25 +128,49 @@ class PaddleGame extends React.Component {
     let mouseX = ev.clientX - rect.left;
     this.game.paddleX = mouseX - (this.game.paddleWidth / 2);
   }
+
+  isBallOutside() {
+    return this.game.ballY > this.game.gameBoard.height;
+  }
   
   resetBall() {
     this.game.ballX = 0;
     this.game.ballY = 0;
   }
 
+  resetGameSpeed() {
+    this.game.gameSpeed = 1000;
+      clearInterval(this.state.gameRefreshInterval);
+      this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+  }
+
   toggleFullScreen() {
     this.setState({isFullScreen: !this.state.isFullScreen})
   }
 
+  startStopGame() {
+    if (!this.state.gameRefreshInterval) {
+      this.game.gameSpeed = 1000;
+      this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+    } else {
+      clearInterval(this.state.gameRefreshInterval);
+      this.setState({gameRefreshInterval: null})
+    }
+  }
+
   render() {
+
+    let startStopGameBtn;
+
+    if (!this.state.gameRefreshInterval) {
+      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>{lang[localStorage.getItem('lang')].startGame}</button>
+    } else {
+      startStopGameBtn = <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}>{lang[localStorage.getItem('lang')].stopGame}</button>
+    }
 
     return (
       <div className="paddle-board">
-        <p className="best-score"> 
-          <FontAwesomeIcon icon={faTrophy} /> 
-          {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
-          <FontAwesomeIcon icon={faTrophy} /> 
-        </p>
+        <p className="best-score"> <FontAwesomeIcon icon={faTrophy} /> {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} <FontAwesomeIcon icon={faTrophy} /> </p>
         <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
         <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
@@ -137,9 +178,12 @@ class PaddleGame extends React.Component {
           width="700" 
           height="500">
         </canvas>
-        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>
-          {lang[localStorage.getItem('lang')].fullScrn}
-        </button>
+
+      <div className="paddle-board--buttons">
+        <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}>{lang[localStorage.getItem('lang')].fullScrn}</button>
+        {startStopGameBtn}
+      </div>
+
       </div>
     );
   } 

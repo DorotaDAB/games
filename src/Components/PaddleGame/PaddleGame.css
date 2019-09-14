@@ -7,6 +7,17 @@
     margin-bottom: 1%;
 }
 
+.paddle-board--buttons {
+    display: flex;
+    align-content: space-between;
+    font-size: 2vw;
+}
+
+.paddle-board--buttons button {
+    width: 20vw;
+    margin: 2%;
+}
+
 .current-score {
     font-size: 1.5vw;
 }

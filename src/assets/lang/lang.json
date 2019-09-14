@@ -14,7 +14,9 @@
       "winner": "The winner is: ",
       "chosenLanguage": "Chosen language: ",
       "changeLanguageTip": "For language change, go to Settings",
-      "fullScrn": "Full Screen"
+      "fullScrn": "Full Screen",
+      "startGame": "Start game",
+      "stopGame": "Stop game"
 
 
     },
@@ -33,7 +35,9 @@
       "winner": "Wygrał gracz: ",
       "chosenLanguage": "Wybrany język: ",
       "changeLanguageTip": "Jeśi chcesz zmienić język, przejdź do zakładki Ustawienia",
-      "fullScrn": "Pełen ekran"
+      "fullScrn": "Pełen ekran",
+      "startGame": "Rozpocznij grę",
+      "stopGame": "Zatrzymaj grę"
     }
   }
 
