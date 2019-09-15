@@ -24,6 +24,8 @@
     align-content: center;
     color:#4B515D;
     margin-bottom: 1%;
+    font-size: 1.5vw;
+
 }
 
 .paddle-board--buttons {
@@ -34,10 +36,6 @@
 button {
     width: 10vw;
     margin: 2%;
-}
-
-.current-score {
-    font-size: 1.5vw;
 }
 
 .best-score {

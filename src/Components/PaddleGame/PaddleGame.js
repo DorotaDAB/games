@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaddleGame.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  import { faTrophy, faPlay, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faPlay, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import lang from '../../assets/lang/lang.json';
 
 class PaddleGame extends React.Component {
@@ -13,6 +13,8 @@ class PaddleGame extends React.Component {
       bounces: 0,
       bestScore: localStorage.getItem("bestScore"),
       isFullScreen: false,
+      gameLevel: 1,
+      userLevel: localStorage.getItem("userLevel"),
     }
 
     this.game = {
@@ -29,7 +31,7 @@ class PaddleGame extends React.Component {
       paddleX: 400,
     }
 
-    this.setLevel = this.setLevel.bind(this);
+    this.setGameLevel = this.setGameLevel.bind(this);
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
   }
@@ -77,29 +79,51 @@ class PaddleGame extends React.Component {
           this.game.ballSpeedY *= -1;
           this.setState({bounces: this.state.bounces + 1});
           this.setBestScore();
-          this.setLevel();
+          this.setGameLevel();
         }
   }
 
-  setLevel() {
+  setGameLevel() {
     if (this.state.bounces > 5 && this.state.bounces <= 10) {
       this.game.gameSpeed = 800;
+      this.setState({gameLevel: 2});
     }
 
     if (this.state.bounces > 10 && this.state.bounces <= 15) {
       this.game.gameSpeed = 600;
+      this.setState({gameLevel: 3});
     }
 
     if (this.state.bounces > 15 && this.state.bounces <= 20) {
       this.game.gameSpeed = 400;
+      this.setState({gameLevel: 4});
     }
 
     if (this.state.bounces > 20) {
       this.game.gameSpeed = 300;
+      this.setState({gameLevel: 5});
     }
 
     clearInterval(this.state.gameRefreshInterval);
     this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+  }
+
+  setUserLevel() {
+    if (this.state.userLevel === 'Begginer') {
+      this.game.paddleWidth = 100;
+    }
+
+    if (this.state.userLevel === 'Regular') {
+      this.game.paddleWidth = 80;
+    }
+
+    if (this.state.userLevel === 'Advanced') {
+      this.game.paddleWidth = 60;
+    }
+
+    if (this.state.userLevel === 'Crazy') {
+      this.game.paddleWidth = 50;
+    }
   }
 
   setBestScore() {
@@ -112,6 +136,8 @@ class PaddleGame extends React.Component {
   }
 
   printElements() {
+    this.setUserLevel();
+
     this.game.context.fillStyle = '#4B515D';
     this.game.context.fillRect(0,0, this.game.gameBoard.width, this.game.gameBoard.height)
   
@@ -198,17 +224,27 @@ class PaddleGame extends React.Component {
         </div>
     }
 
+    let difficultyLevel;
+
+    if (!localStorage.getItem('userLevel')) {
+      difficultyLevel = lang[localStorage.getItem('lang')].default;
+    } else {difficultyLevel = this.state.userLevel}
+    
+
     return (
       <div className="paddle-board">
         <p className="best-score"> <FontAwesomeIcon icon={faTrophy} /> {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} <FontAwesomeIcon icon={faTrophy} /> </p>
         <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
+        <p className="game-level"> {lang[localStorage.getItem('lang')].gameLevel} {this.state.gameLevel} </p>
+        <p className="user-level"> {lang[localStorage.getItem('lang')].difficultyLevel} {difficultyLevel} </p>
+
         <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
           ref="canvas" 
           width="700" 
           height="500"          >
         </canvas>
-        <div classname="paddle-board--buttons">
+        <div className="paddle-board--buttons">
           <div className="paddle-board--buttons--wide">
             <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
               <FontAwesomeIcon icon={faExpandArrowsAlt } /> 

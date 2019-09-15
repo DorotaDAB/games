@@ -12,7 +12,6 @@ class HomePage extends React.Component {
 				<Link to="/tictactoe"> <img src={require('../../assets/img/tic-tac-toe.png')} alt="Tic-Tac-Toe"/></Link>
 				<Link to="/paddle"> <img src={require('../../assets/img/paddle-game.png')} alt="Pong"/> </Link>
 			</div>
-			<p>{lang[localStorage.getItem('lang')].changeLanguageTip}</p>
 		 </div>
 	)}
 };

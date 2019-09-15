@@ -19,3 +19,11 @@
     height: 4vw;
     margin: 2%;
 }
+
+.settings--paddle-settings {
+    margin-top: 5%;
+}
+.settings p {
+  text-align: center;
+  font-weight: 600;
+}
