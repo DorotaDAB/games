@@ -248,19 +248,23 @@ class PaddleGame extends React.Component {
           <div className="paddle-board--buttons--wide">
             <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
               <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
-              {lang[localStorage.getItem('lang')].fullScrn} </button>
+              {lang[localStorage.getItem('lang')].fullScrn} 
+            </button>
             {startStopGameBtn}
             <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
               <FontAwesomeIcon icon={faRedoAlt } /> 
-              {lang[localStorage.getItem('lang')].resetScore} </button>
+              {lang[localStorage.getItem('lang')].resetScore} 
+            </button>
           </div>
 
           <div className="paddle-board--buttons--narrow">
             <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
-              <FontAwesomeIcon icon={faExpandArrowsAlt } /> </button>
-            {startStopGameBtn}
+              <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
+            </button>
+              {startStopGameBtn}
             <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
-              <FontAwesomeIcon icon={faRedoAlt } /> </button>
+              <FontAwesomeIcon icon={faRedoAlt } /> 
+            </button>
           </div>
         </div>
       </div>

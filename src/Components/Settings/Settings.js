@@ -11,58 +11,56 @@ class Settings extends React.Component {
     EventEmitter.dispatch('langChange', true)
   }
  
-  setUserBegginer() {
-    localStorage.setItem('userLevel', 'Beginner');
+  setUserLevel(event) {
+    localStorage.setItem('userLevel', event.target.value);
   }
-
-  setUserRegular() {
-    localStorage.setItem('userLevel', 'Regular');
-  }
-
-  setUserAdvanced() {
-    localStorage.setItem('userLevel', 'Advanced');
-  }
-
-  setUserCrazy() {
-    localStorage.setItem('userLevel', 'Crazy');
-  }
-
+ 
   render() {
     return (
       <div className="settings">
-        <div className="settings--language-settings">
+        <div className="settings box-settings">
+          <div className="settings-title">Global settings</div>
           <p>{lang[localStorage.getItem('lang')].selectLanguage}</p>
           <div className="settings-buttons">
             <img src={require('../../assets/img/flag-pl.png')} alt="polish" onClick={this.setLang.bind(this, 'pl') }/>  
             <img src={require('../../assets/img/flag-en.png')} alt="english" onClick={this.setLang.bind(this, 'en') }/> 
           </div>
         </div>
-        <div className="settings--paddle-settings">
+        <div className="settings box-settings">
+          <div className="settings-title">Pong</div>
           <p>{lang[localStorage.getItem('lang')].paddleGameSettings}</p>
           <Form>
             <Form.Check
               type="radio"
+              value="Beginner"
+              defaultChecked={localStorage.getItem('userLevel') === 'Beginner'}
               inline label="Beginner"
               name="formHorizontalRadios"
-              onClick={this.setUserBegginer.bind(this)}
+              onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
+              value="Regular"
+              defaultChecked={localStorage.getItem('userLevel') === 'Regular'}
               inline label="Regular"
               name="formHorizontalRadios"
-              onClick={this.setUserRegular.bind(this)}
+              onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
+              value="Advanced"
+              defaultChecked={localStorage.getItem('userLevel') === 'Advanced'}
               inline label="Advanced"
               name="formHorizontalRadios"
-              onClick={this.setUserAdvanced.bind(this)}
+              onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
+              value="Crazy"
+              defaultChecked={localStorage.getItem('userLevel') === 'Crazy'}
               inline label="Crazy"
               name="formHorizontalRadios"
-              onClick={this.setUserCrazy.bind(this)}
+              onClick={this.setUserLevel.bind(this)}
             />
           </Form> 
         </div>

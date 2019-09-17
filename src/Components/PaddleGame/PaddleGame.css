@@ -1,83 +1,82 @@
 .paddle-board--buttons--narrow {
-    display: flex;
-    align-items: center;
-    font-size: 2vw;
+  display: flex;
+  align-items: center;
+  font-size: 2vw;
 } 
 
 .paddle-board--buttons--wide {
-    display: none;
+  display: none;
 }
 
 .start-stop--narrow {
-    display: block;
+  display: block;
 } 
 
 .start-stop--wide {
-    display: none;
+  display: none;
 }
 
 .paddle-board {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    color:#4B515D;
-    margin-bottom: 1%;
-    font-size: 1.5vw;
-
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  color:#4B515D;
+  margin-bottom: 1%;
+  font-size: 1.5vw;
 }
 
 .paddle-board--buttons {
-    display: flex;
-    align-content: space-between;
+  display: flex;
+  align-content: space-between;
 }
 
 button {
-    width: 10vw;
-    margin: 2%;
+  width: 10vw;
+  margin: 2%;
 }
 
 .best-score {
-    margin-top: 2%;
-    font-size: 2vw;
+  margin-top: 2%;
+  font-size: 2vw;
 }
 
 canvas {
-    border-radius: 10px;
-    border: solid black;
-    cursor: none;
+  border-radius: 10px;
+  border: solid black;
+  cursor: none;
 } 
 
 .paddle-board--full-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 @media (min-width: 768px) {
-    .paddle-board--buttons--narrow {
-        display: none;
-    } 
+  .paddle-board--buttons--narrow {
+    display: none;
+  } 
 
-    .paddle-board--buttons--wide {
-        display: flex;
-        align-items: center;
-        font-size: 1.5vw;
-    }
+  .paddle-board--buttons--wide {
+    display: flex;
+    align-items: center;
+    font-size: 1.5vw;
+  }
 
-    .start-stop--narrow {
-        display: none;
-    } 
+  .start-stop--narrow {
+    display: none;
+  } 
 
-    .start-stop--wide {
-        display: block;
-    }
+  .start-stop--wide {
+    display: block;
+  }
 
-    button {
-        width: 20vw;
-        font-size: 1.5vw;
-    }
+  button {
+    width: 20vw;
+    font-size: 1.5vw;
+  }
 }

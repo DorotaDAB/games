@@ -9,7 +9,7 @@
 
 .container--narrow-container {
   display: block;
- }
+}
  
 .nav {
   justify-content: center;
@@ -32,7 +32,7 @@
 @media (min-width: 768px) {
   .container--wide-container {
     display: block;
-   }
+  }
   
   .container--narrow-container {
     display: none;

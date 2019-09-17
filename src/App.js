@@ -14,7 +14,6 @@ import { EventEmitter } from './assets/EventEmmiter';
 
 
 class App extends React.Component {
-
   constructor() {
     super();
 
@@ -38,45 +37,44 @@ class App extends React.Component {
     <>
       <Router>
         <div className="container">
-            <div className="container--wide-container">
-              <Nav variant="tabs" defaultActiveKey="/home">
-                <Nav.Item>
-                  <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /> {lang[localStorage.getItem('lang')].homePage}</Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /> {lang[localStorage.getItem('lang')].ticTacToe}</Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /> {lang[localStorage.getItem('lang')].paddleGame} </Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /> {lang[localStorage.getItem('lang')].settings} </Link>
-                </Nav.Item>
-              </Nav>
-            </div>
-            
-            <div className="container--narrow-container">
-              <Nav variant="tabs" defaultActiveKey="/home">
-                <Nav.Item>
-                  <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /></Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /></Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /></Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /></Link>
-                </Nav.Item>
-              </Nav>
-            </div>
+          <div className="container--wide-container">
+            <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav.Item>
+                <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /> {lang[localStorage.getItem('lang')].homePage}</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /> {lang[localStorage.getItem('lang')].ticTacToe}</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /> {lang[localStorage.getItem('lang')].paddleGame} </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /> {lang[localStorage.getItem('lang')].settings} </Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+          <div className="container--narrow-container">
+            <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav.Item>
+                <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /></Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /></Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /></Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /></Link>
+              </Nav.Item>
+            </Nav>
+          </div>
         </div>
         <div className="container">
-            <Route exact path='/' component={HomePage}/>
-            <Route exact path='/tictactoe' component={TicTacToe}/>
-            <Route exact path='/paddle' component={PaddleGame}/>
-            <Route exact path='/settings' component={Settings}/>
+          <Route exact path='/' component={HomePage}/>
+          <Route exact path='/tictactoe' component={TicTacToe}/>
+          <Route exact path='/paddle' component={PaddleGame}/>
+          <Route exact path='/settings' component={Settings}/>
         </div>
       </Router>
     </>
