@@ -15,12 +15,18 @@
       "chosenLanguage": "Chosen language: ",
       "fullScrn": " Full Screen",
       "startGame": " Start game",
-      "stopGame": " Stop game",
+      "stopGame": " Pause game",
       "resetScore": " Reset best score",
-      "gameLevel": " Level:",
+      "gameLevel": " Game level:",
       "paddleGameSettings": "Set difficulty level",
       "difficultyLevel": "Difficulty level: ",
-      "default": "Default: for change go to Settings"
+      "default": "Default: for change go to Settings",
+      "gobalSettings": " Global settings",
+      "pongSettings": " Pong settings",
+      "Beginner": "Beginner",
+      "Regular": "Regular",
+      "Advanced": "Advanced",
+      "Crazy": "Crazy"
     },
   "pl": {
     "homePage": "Strona główna",
@@ -40,10 +46,16 @@
     "startGame": " Rozpocznij grę",
     "stopGame": " Zatrzymaj grę",
     "resetScore": " Wyzeruj rekord",
-    "gameLevel": " Poziom: ",
+    "gameLevel": " Poziom gry: ",
     "paddleGameSettings": "Ustaw poziom trudności",
     "difficultyLevel": "Poziom trudności  : ",
-    "default": "Domyślny: zmiana możliwa w Ustawieniach"
+    "default": "Domyślny: zmiana możliwa w Ustawieniach",
+    "gobalSettings": " Ustawienia ogólne",
+    "pongSettings": " Odbijanie piłki: ustawienia",
+    "Beginner": "Łatwy",
+    "Regular": "Średni",
+    "Advanced": "Trudny",
+    "Crazy": "Szlony"
   }
 }
 

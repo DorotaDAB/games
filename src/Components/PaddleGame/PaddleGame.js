@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaddleGame.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy, faPlay, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faPlay, faPause, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 import lang from '../../assets/lang/lang.json';
 
 class PaddleGame extends React.Component {
@@ -50,7 +50,7 @@ class PaddleGame extends React.Component {
   updateDirection() {
     this.game.ballX += this.game.ballSpeedX;
     this.game.ballY += this.game.ballSpeedY;
-  
+
     if(this.game.ballX < 0) {
       this.game.ballSpeedX *= -1;
     }
@@ -66,7 +66,7 @@ class PaddleGame extends React.Component {
       this.resetBall();
       this.setState({bounces: 0})
     }
-  
+
     let paddleTopEdgeY = this.game.gameBoard.height - this.game.paddleDistFromEdge;
     let paddleBottomEdgeY = paddleTopEdgeY + this.game.paddleHeight;
     let paddleLeftEdgeX = this.game.paddleX;
@@ -219,7 +219,7 @@ class PaddleGame extends React.Component {
         </div>
         <div className="start-stop--wide">
           <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
-          <FontAwesomeIcon icon={faPlay} /> {lang[localStorage.getItem('lang')].stopGame} </button>
+          <FontAwesomeIcon icon={faPause} /> {lang[localStorage.getItem('lang')].stopGame} </button>
           </div>
         </div>
     }
@@ -228,12 +228,15 @@ class PaddleGame extends React.Component {
 
     if (!localStorage.getItem('userLevel')) {
       difficultyLevel = lang[localStorage.getItem('lang')].default;
-    } else {difficultyLevel = this.state.userLevel}
-    
+    } else {difficultyLevel = lang[localStorage.getItem('lang')][this.state.userLevel]}
 
     return (
       <div className="paddle-board">
-        <p className="best-score"> <FontAwesomeIcon icon={faTrophy} /> {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} <FontAwesomeIcon icon={faTrophy} /> </p>
+        <p className="best-score"> 
+          <FontAwesomeIcon icon={faTrophy} /> 
+          {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
+          <FontAwesomeIcon icon={faTrophy} /> 
+        </p>
         <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
         <p className="game-level"> {lang[localStorage.getItem('lang')].gameLevel} {this.state.gameLevel} </p>
         <p className="user-level"> {lang[localStorage.getItem('lang')].difficultyLevel} {difficultyLevel} </p>
@@ -263,7 +266,7 @@ class PaddleGame extends React.Component {
             </button>
               {startStopGameBtn}
             <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
-              <FontAwesomeIcon icon={faRedoAlt } /> 
+              <FontAwesomeIcon icon={faRedoAlt} /> 
             </button>
           </div>
         </div>

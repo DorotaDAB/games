@@ -3,6 +3,8 @@ import './Settings.css';
 import lang from '../../assets/lang/lang.json';
 import { EventEmitter } from '../../assets/EventEmmiter';
 import { Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTableTennis , faTools } from '@fortawesome/free-solid-svg-icons';
 
 class Settings extends React.Component {
 
@@ -19,7 +21,9 @@ class Settings extends React.Component {
     return (
       <div className="settings">
         <div className="settings box-settings">
-          <div className="settings-title">Global settings</div>
+          <div className="settings-title"> 
+            <FontAwesomeIcon icon={faTools} /> {lang[localStorage.getItem('lang')].gobalSettings}
+          </div>
           <p>{lang[localStorage.getItem('lang')].selectLanguage}</p>
           <div className="settings-buttons">
             <img src={require('../../assets/img/flag-pl.png')} alt="polish" onClick={this.setLang.bind(this, 'pl') }/>  
@@ -27,14 +31,14 @@ class Settings extends React.Component {
           </div>
         </div>
         <div className="settings box-settings">
-          <div className="settings-title">Pong</div>
+          <div className="settings-title"> <FontAwesomeIcon icon={faTableTennis} /> {lang[localStorage.getItem('lang')].pongSettings}</div>
           <p>{lang[localStorage.getItem('lang')].paddleGameSettings}</p>
           <Form>
             <Form.Check
               type="radio"
               value="Beginner"
               defaultChecked={localStorage.getItem('userLevel') === 'Beginner'}
-              inline label="Beginner"
+              inline label={lang[localStorage.getItem('lang')].Beginner}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
@@ -42,7 +46,7 @@ class Settings extends React.Component {
               type="radio"
               value="Regular"
               defaultChecked={localStorage.getItem('userLevel') === 'Regular'}
-              inline label="Regular"
+              inline label={lang[localStorage.getItem('lang')].Regular}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
@@ -50,7 +54,7 @@ class Settings extends React.Component {
               type="radio"
               value="Advanced"
               defaultChecked={localStorage.getItem('userLevel') === 'Advanced'}
-              inline label="Advanced"
+              inline label={lang[localStorage.getItem('lang')].Advanced}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
@@ -58,7 +62,7 @@ class Settings extends React.Component {
               type="radio"
               value="Crazy"
               defaultChecked={localStorage.getItem('userLevel') === 'Crazy'}
-              inline label="Crazy"
+              inline label={lang[localStorage.getItem('lang')].Crazy}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
