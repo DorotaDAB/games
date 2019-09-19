@@ -5,10 +5,12 @@ Application contains various browser-based games.
 * Used tools: React.js, Bootstrap, HTML canvas.
 
 **Available games:**
-* Tic-Tac-Toe
+* Tic Tac Toe
+* Pong
 
-![image](./src/assets/img/tic-tac-toe.png)
+_Options_ 
+* Global: language version (pl/en),
+* Pong: Difficulty level settings, game speed increase according to game score, best score and difficulty level stored in Local Storage,
+* Tic Tac Toe: play with computer,
 
-* Paddle-game
-
-![image](./src/assets/img/paddle-game.png)
+![image](./src/assets/img/home-page.png)
