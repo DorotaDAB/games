@@ -85,4 +85,8 @@
   .game-board {
     font-size: 5vw;  
   }
+
+  .btn-dark {
+    font-size: 1vw;
+  }
 }

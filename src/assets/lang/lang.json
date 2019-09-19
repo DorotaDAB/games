@@ -17,9 +17,9 @@
       "startGame": " Start game",
       "stopGame": " Pause game",
       "resetScore": " Reset best score",
-      "gameLevel": " Game level:",
-      "paddleGameSettings": "Set difficulty level",
-      "difficultyLevel": "Difficulty level: ",
+      "gameLevel": " Game speed:",
+      "paddleGameSettings": "Difficulty level",
+      "difficultyLevel": "Difficulty: ",
       "default": "Default: for change go to Settings",
       "gobalSettings": " Global settings",
       "pongSettings": " Pong settings",
@@ -46,8 +46,8 @@
     "startGame": " Rozpocznij grę",
     "stopGame": " Zatrzymaj grę",
     "resetScore": " Wyzeruj rekord",
-    "gameLevel": " Poziom gry: ",
-    "paddleGameSettings": "Ustaw poziom trudności",
+    "gameLevel": " Prędkość gry: ",
+    "paddleGameSettings": "Ustaw poziom",
     "difficultyLevel": "Poziom trudności  : ",
     "default": "Domyślny: zmiana możliwa w Ustawieniach",
     "gobalSettings": " Ustawienia ogólne",
@@ -55,7 +55,7 @@
     "Beginner": "Łatwy",
     "Regular": "Średni",
     "Advanced": "Trudny",
-    "Crazy": "Szlony"
+    "Crazy": "Szalony"
   }
 }
 

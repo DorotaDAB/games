@@ -1,3 +1,43 @@
+.best-score {
+  margin-top: 2%;
+  font-size: 2vw;
+}
+
+.paddle-board {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  color:#4B515D;
+  margin-bottom: 1%;
+  font-size: 1.5vw;
+}
+
+.paddle-board--full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  border-radius: 10px;
+  border: solid black;
+  cursor: none;
+} 
+
+button {
+  width: 15vw;
+  margin: 2%;
+}
+
+.paddle-board--buttons {
+  display: flex;
+  align-content: space-between;
+}
+
 .paddle-board--buttons--narrow {
   display: flex;
   align-items: center;
@@ -16,46 +56,6 @@
   display: none;
 }
 
-.paddle-board {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  color:#4B515D;
-  margin-bottom: 1%;
-  font-size: 1.5vw;
-}
-
-.paddle-board--buttons {
-  display: flex;
-  align-content: space-between;
-}
-
-button {
-  width: 10vw;
-  margin: 2%;
-}
-
-.best-score {
-  margin-top: 2%;
-  font-size: 2vw;
-}
-
-canvas {
-  border-radius: 10px;
-  border: solid black;
-  cursor: none;
-} 
-
-.paddle-board--full-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
 @media (min-width: 768px) {
   .paddle-board--buttons--narrow {
     display: none;
@@ -64,7 +64,6 @@ canvas {
   .paddle-board--buttons--wide {
     display: flex;
     align-items: center;
-    font-size: 1.5vw;
   }
 
   .start-stop--narrow {
@@ -74,9 +73,23 @@ canvas {
   .start-stop--wide {
     display: block;
   }
+ 
+  .btn-dark {
+    width: 15vw;
+    font-size: 1vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .paddle-board {
+    font-size: 1.2vw;
+  }
+
+  .best-score {
+    font-size: 1.4vw;
+  }
 
   button {
-    width: 20vw;
-    font-size: 1.5vw;
+    margin: 1%;
   }
 }

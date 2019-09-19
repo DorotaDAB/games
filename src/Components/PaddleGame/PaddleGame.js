@@ -1,7 +1,8 @@
 import React from 'react';
 import './PaddleGame.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy, faPlay, faPause, faExpandArrowsAlt, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faPlay, faPause, faExpandArrowsAlt, faRedoAlt, faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import lang from '../../assets/lang/lang.json';
 
 class PaddleGame extends React.Component {
@@ -109,7 +110,7 @@ class PaddleGame extends React.Component {
   }
 
   setUserLevel() {
-    if (this.state.userLevel === 'Begginer') {
+    if (this.state.userLevel === 'Beginner') {
       this.game.paddleWidth = 100;
     }
 
@@ -232,21 +233,21 @@ class PaddleGame extends React.Component {
 
     return (
       <div className="paddle-board">
-        <p className="best-score"> 
-          <FontAwesomeIcon icon={faTrophy} /> 
-          {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
-          <FontAwesomeIcon icon={faTrophy} /> 
-        </p>
-        <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
-        <p className="game-level"> {lang[localStorage.getItem('lang')].gameLevel} {this.state.gameLevel} </p>
-        <p className="user-level"> {lang[localStorage.getItem('lang')].difficultyLevel} {difficultyLevel} </p>
-
+          <p className="best-score"> 
+            <FontAwesomeIcon icon={faTrophy} /> 
+            {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
+            <FontAwesomeIcon icon={faTrophy} /> 
+          </p>
+          <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
+          <p className="game-level"> {lang[localStorage.getItem('lang')].gameLevel} {this.state.gameLevel} </p>
+          <p className="user-level"> {lang[localStorage.getItem('lang')].difficultyLevel} {difficultyLevel} </p>
         <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
           ref="canvas" 
           width="700" 
           height="500"          >
         </canvas>
+        
         <div className="paddle-board--buttons">
           <div className="paddle-board--buttons--wide">
             <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
@@ -255,11 +256,15 @@ class PaddleGame extends React.Component {
             </button>
             {startStopGameBtn}
             <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
-              <FontAwesomeIcon icon={faRedoAlt } /> 
+              <FontAwesomeIcon icon={faRedoAlt} /> 
               {lang[localStorage.getItem('lang')].resetScore} 
             </button>
+            <Link to="/settings">  
+              <button className="btn btn-dark">  
+                  <FontAwesomeIcon icon={faExchangeAlt} /> {lang[localStorage.getItem('lang')].paddleGameSettings} 
+              </button> 
+            </Link>
           </div>
-
           <div className="paddle-board--buttons--narrow">
             <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
               <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
@@ -268,6 +273,9 @@ class PaddleGame extends React.Component {
             <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
               <FontAwesomeIcon icon={faRedoAlt} /> 
             </button>
+            <Link to="/tictactoe"> 
+              <button className="btn btn-dark"> <FontAwesomeIcon icon={faExchangeAlt}/> </button>
+            </Link>
           </div>
         </div>
       </div>

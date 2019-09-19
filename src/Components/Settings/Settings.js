@@ -7,6 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTableTennis , faTools } from '@fortawesome/free-solid-svg-icons';
 
 class Settings extends React.Component {
+  USER_LEVEL_BEGINNER = "Beginner";
+  USER_LEVEL_REGULAR = "Regular";
+  USER_LEVEL_ADVANCED = "Advanced";
+  USER_LEVEL_CRAZY = "Crazy";
 
   setLang(lang) {
     localStorage.setItem('lang', lang);
@@ -16,7 +20,7 @@ class Settings extends React.Component {
   setUserLevel(event) {
     localStorage.setItem('userLevel', event.target.value);
   }
- 
+
   render() {
     return (
       <div className="settings">
@@ -36,32 +40,32 @@ class Settings extends React.Component {
           <Form>
             <Form.Check
               type="radio"
-              value="Beginner"
-              defaultChecked={localStorage.getItem('userLevel') === 'Beginner'}
+              value={this.USER_LEVEL_BEGINNER}
+              defaultChecked={localStorage.getItem('userLevel') === this.USER_LEVEL_BEGINNER}
               inline label={lang[localStorage.getItem('lang')].Beginner}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
-              value="Regular"
-              defaultChecked={localStorage.getItem('userLevel') === 'Regular'}
+              value={this.USER_LEVEL_REGULAR}
+              defaultChecked={localStorage.getItem('userLevel') === this.USER_LEVEL_REGULAR}
               inline label={lang[localStorage.getItem('lang')].Regular}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
-              value="Advanced"
-              defaultChecked={localStorage.getItem('userLevel') === 'Advanced'}
+              value={this.USER_LEVEL_ADVANCED}
+              defaultChecked={localStorage.getItem('userLevel') === this.USER_LEVEL_ADVANCED}
               inline label={lang[localStorage.getItem('lang')].Advanced}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
             />
             <Form.Check
               type="radio"
-              value="Crazy"
-              defaultChecked={localStorage.getItem('userLevel') === 'Crazy'}
+              value={this.USER_LEVEL_CRAZY}
+              defaultChecked={localStorage.getItem('userLevel') === this.USER_LEVEL_CRAZY}
               inline label={lang[localStorage.getItem('lang')].Crazy}
               name="formHorizontalRadios"
               onClick={this.setUserLevel.bind(this)}
