@@ -86,10 +86,12 @@ button {
   }
 
   .best-score {
-    font-size: 1.4vw;
+    margin-top: 1%;
+    font-size: 1.3vw;
   }
 
   button {
-    margin: 1%;
+    margin-top: 1%;
+    margin-bottom: 0%;
   }
 }
