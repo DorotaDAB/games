@@ -1,5 +1,6 @@
 import React from 'react';
 import './PaddleGame.css';
+import constans from '../../config/constans';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy, faPlay, faPause, faExpandArrowsAlt, faRedoAlt, faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -110,19 +111,19 @@ class PaddleGame extends React.Component {
   }
 
   setUserLevel() {
-    if (this.state.userLevel === 'Beginner') {
+    if (this.state.userLevel === constans.USER_LEVEL_BEGINNER) {
       this.game.paddleWidth = 100;
     }
 
-    if (this.state.userLevel === 'Regular') {
+    if (this.state.userLevel === constans.USER_LEVEL_REGULAR) {
       this.game.paddleWidth = 80;
     }
 
-    if (this.state.userLevel === 'Advanced') {
+    if (this.state.userLevel === constans.USER_LEVEL_ADVANCED) {
       this.game.paddleWidth = 60;
     }
 
-    if (this.state.userLevel === 'Crazy') {
+    if (this.state.userLevel === constans.USER_LEVEL_CRAZY) {
       this.game.paddleWidth = 50;
     }
   }
