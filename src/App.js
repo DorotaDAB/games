@@ -1,17 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSlackHash } from '@fortawesome/free-brands-svg-icons';
+import { faTableTennis, faHome, faCog } from '@fortawesome/free-solid-svg-icons';
+import { EventEmitter } from './assets/EventEmmiter';
 import './App.css';
 import HomePage from './Components/HomePage/HomePage';
 import TicTacToe from './Components/TicTacToe/TicTacToe';
 import PaddleGame from './Components/PaddleGame/PaddleGame';
 import Settings from './Components/Settings/Settings';
 import lang from '../src/assets/lang/lang.json';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSlackHash } from '@fortawesome/free-brands-svg-icons';
-import { faTableTennis, faHome, faCog } from '@fortawesome/free-solid-svg-icons';
-import { EventEmitter } from './assets/EventEmmiter';
-
 
 class App extends React.Component {
   constructor() {
@@ -34,11 +33,10 @@ class App extends React.Component {
 
   render() {
     return (
-    <>
       <Router>
         <div className="container">
           <div className="container--wide-container">
-            <Nav variant="tabs" defaultActiveKey="/home">
+            <Nav variant="tabs" defaultActiveKey="/">
               <Nav.Item>
                 <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /> {lang[localStorage.getItem('lang')].homePage}</Link>
               </Nav.Item>
@@ -54,7 +52,7 @@ class App extends React.Component {
             </Nav>
           </div>
           <div className="container--narrow-container">
-            <Nav variant="tabs" defaultActiveKey="/home">
+            <Nav variant="tabs" defaultActiveKey="/">
               <Nav.Item>
                 <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /></Link>
               </Nav.Item>
@@ -77,7 +75,6 @@ class App extends React.Component {
           <Route exact path='/settings' component={Settings}/>
         </div>
       </Router>
-    </>
     );
   }
 }

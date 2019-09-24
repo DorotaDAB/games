@@ -3,7 +3,7 @@ import './TicTacToe.css';
 import lang from '../../assets/lang/lang.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import { faTimes , faTrophy, faRedoAlt} from '@fortawesome/free-solid-svg-icons';
+import { faTimes , faTrophy, faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 
 class TicTacToe extends React.Component {
 	constructor() {
@@ -24,7 +24,7 @@ class TicTacToe extends React.Component {
   }
 
   checkGameStatus(selectedPlayer) {
-    for (let i = 0 ; i <= 6; i = i + 3 ) {
+    for (let i = 0 ; i <= 6; i = i + 3) {
       if (!!this.state.board[i] && !!this.state.board[i+1] && !!this.state.board[i+2]) {
         if ( this.state.board[i] === this.state.board[i+1] && this.state.board[i+1] === this.state.board[i+2]) {
           this.endGame(selectedPlayer);
@@ -33,7 +33,7 @@ class TicTacToe extends React.Component {
       }
     }
 
-    for (let i = 0; i < 3; i++ ) {
+    for (let i = 0; i < 3; i++) {
       if (!!this.state.board[i] && !!this.state.board[i+3] && !!this.state.board[i+6]) {
         if ( this.state.board[i] === this.state.board[i+3] && this.state.board[i+3] === this.state.board[i+6]) {
           this.endGame(selectedPlayer);
@@ -56,7 +56,7 @@ class TicTacToe extends React.Component {
       }
     }   
 
-    if (this.state.turn === 8) {this.isDraw(); return}
+    if (this.state.turn === 8) { this.isDraw(); return }
   }
 
   computerTurn() {
@@ -103,7 +103,7 @@ class TicTacToe extends React.Component {
     this.setState({
       turn: nextTurnNumber,
       board
-    },  this.computerTurn)
+    }, this.computerTurn)
     this.checkGameStatus(this.state.player1);
   }
 
@@ -122,7 +122,7 @@ class TicTacToe extends React.Component {
 
   isDraw() {
     this.setState(
-      {winner: lang[localStorage.getItem('lang')].draw}
+      { winner: lang[localStorage.getItem('lang')].draw }
     )
   }
 

@@ -1,19 +1,16 @@
-.best-score {
-  margin-top: 2%;
-  font-size: 2vw;
-}
-
-.paddle-board {
+.paddle-board--container {
   display: flex;
-  flex-direction: column;
   text-align: center;
   align-items: center;
   align-content: center;
-  color:#4B515D;
+  margin-top: 2%;
   margin-bottom: 1%;
+  color: #4B515D;
   font-size: 1.5vw;
 }
-
+.paddle-board--container-score {
+   margin-right: 1%;
+ }
 .paddle-board--full-screen {
   position: fixed;
   top: 0;
@@ -24,11 +21,16 @@
 
 canvas {
   border-radius: 10px;
-  border: solid black;
+  border: solid #000000;
   cursor: none;
 } 
 
-button {
+.best-score {
+  margin-top: 2%;
+  font-size: 2vw;
+}
+
+.paddle-board--buttons button {
   width: 15vw;
   margin: 2%;
 }
@@ -36,11 +38,16 @@ button {
 .paddle-board--buttons {
   display: flex;
   align-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .paddle-board--buttons--narrow {
   display: flex;
   align-items: center;
+  align-content: center;
+  margin: 2%;
   font-size: 2vw;
 } 
 
@@ -72,26 +79,13 @@ button {
 
   .start-stop--wide {
     display: block;
-  }
- 
-  .btn-dark {
+    margin: 2%;
     width: 15vw;
     font-size: 1vw;
   }
-}
 
-@media (min-width: 1024px) {
-  .paddle-board {
-    font-size: 1.2vw;
-  }
-
-  .best-score {
-    margin-top: 1%;
-    font-size: 1.3vw;
-  }
-
-  button {
-    margin-top: 1%;
-    margin-bottom: 0%;
+  .btn-dark {
+    width: 15vw;
+    font-size: 1vw;
   }
 }

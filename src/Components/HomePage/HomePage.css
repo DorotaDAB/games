@@ -3,11 +3,11 @@
   flex-direction: column; 
   align-items: center;
   margin-top: 2%;
-  color:#4B515D;
-  font-size: 3vw;
+  color: #4B515D;
 }
-.games-choice p {
-  font-size: 1.5vw;
+
+.games-choice h1 {
+  font-size: 3vw;
 }
 
 .games-img {

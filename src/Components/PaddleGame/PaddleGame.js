@@ -175,12 +175,12 @@ class PaddleGame extends React.Component {
 
   resetGameSpeed() {
     this.game.gameSpeed = 1000;
-      clearInterval(this.state.gameRefreshInterval);
-      this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+    clearInterval(this.state.gameRefreshInterval);
+    this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
   }
 
   toggleFullScreen() {
-    this.setState({isFullScreen: !this.state.isFullScreen})
+    this.setState({isFullScreen: !this.state.isFullScreen});
   }
 
   startStopGame() {
@@ -189,17 +189,16 @@ class PaddleGame extends React.Component {
       this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
     } else {
       clearInterval(this.state.gameRefreshInterval);
-      this.setState({gameRefreshInterval: null})
+      this.setState({gameRefreshInterval: null});
     }
   }
 
   resetBestScore() {
     localStorage.setItem('bestScore', '0');
-    this.setState({bounces: 0})
+    this.setState({bounces: 0});
   }
 
   render() {
-
     let startStopGameBtn;
 
     if (!this.state.gameRefreshInterval) {
@@ -215,71 +214,75 @@ class PaddleGame extends React.Component {
         </div>
     } else {
       startStopGameBtn = <div className="start-stop">
-        <div className="start-stop--narrow">
-          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
-          <FontAwesomeIcon icon={faPlay} /></button>
+
+      <div className="start-stop--narrow">
+        <button className="btn btn-dark" onClick={ this.startStopGame.bind(this) }> 
+        <FontAwesomeIcon icon={faPlay} /></button>
+      </div>
+      <div className="start-stop--wide">
+        <button className="btn btn-dark" onClick={ this.startStopGame.bind(this) }> 
+        <FontAwesomeIcon icon={faPause} /> {lang[localStorage.getItem('lang')].stopGame} </button>
         </div>
-        <div className="start-stop--wide">
-          <button className="btn btn-dark" onClick={this.startStopGame.bind(this)}> 
-          <FontAwesomeIcon icon={faPause} /> {lang[localStorage.getItem('lang')].stopGame} </button>
-          </div>
-        </div>
+      </div>
     }
 
     let difficultyLevel;
 
     if (!localStorage.getItem('userLevel')) {
-      difficultyLevel = lang[localStorage.getItem('lang')].default;
+      difficultyLevel = lang[localStorage.getItem('lang')].defaultdifficultyLevel;
     } else {difficultyLevel = lang[localStorage.getItem('lang')][this.state.userLevel]}
 
     return (
-      <div className="paddle-board">
+    <>
+      <div className="paddle-board--container">
+        <div className="paddle-board--container-score">
           <p className="best-score"> 
             <FontAwesomeIcon icon={faTrophy} /> 
-            {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
+              {lang[localStorage.getItem('lang')].bestScore} {localStorage.getItem("bestScore")} 
             <FontAwesomeIcon icon={faTrophy} /> 
           </p>
           <p className="current-score"> {lang[localStorage.getItem('lang')].yourScore} {this.state.bounces}</p>
           <p className="game-level"> {lang[localStorage.getItem('lang')].gameLevel} {this.state.gameLevel} </p>
           <p className="user-level"> {lang[localStorage.getItem('lang')].difficultyLevel} {difficultyLevel} </p>
+        </div>
         <canvas onDoubleClick={this.toggleFullScreen.bind(this)}
           className={this.state.isFullScreen ? 'paddle-board paddle-board--full-screen' : 'paddle-board'} 
           ref="canvas" 
           width="700" 
-          height="500"          >
+          height="500">
         </canvas>
-        
-        <div className="paddle-board--buttons">
-          <div className="paddle-board--buttons--wide">
-            <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
-              <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
-              {lang[localStorage.getItem('lang')].fullScrn} 
-            </button>
-            {startStopGameBtn}
-            <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
-              <FontAwesomeIcon icon={faRedoAlt} /> 
-              {lang[localStorage.getItem('lang')].resetScore} 
-            </button>
-            <Link to="/settings">  
-              <button className="btn btn-dark">  
-                  <FontAwesomeIcon icon={faExchangeAlt} /> {lang[localStorage.getItem('lang')].paddleGameSettings} 
-              </button> 
-            </Link>
-          </div>
-          <div className="paddle-board--buttons--narrow">
-            <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
-              <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
-            </button>
-              {startStopGameBtn}
-            <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
-              <FontAwesomeIcon icon={faRedoAlt} /> 
-            </button>
-            <Link to="/tictactoe"> 
-              <button className="btn btn-dark"> <FontAwesomeIcon icon={faExchangeAlt}/> </button>
-            </Link>
-          </div>
-        </div>
       </div>
+       <div className="paddle-board--buttons">
+        <div className="paddle-board--buttons--wide">
+          <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
+            <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
+            {lang[localStorage.getItem('lang')].fullScrn} 
+          </button>
+          {startStopGameBtn}
+          <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
+            <FontAwesomeIcon icon={faRedoAlt} /> 
+            {lang[localStorage.getItem('lang')].resetScore} 
+          </button>
+          <Link to="/settings">  
+            <button className="btn btn-dark">  
+              <FontAwesomeIcon icon={faExchangeAlt} /> {lang[localStorage.getItem('lang')].paddleGameSettings} 
+            </button> 
+          </Link>
+        </div>
+        <div className="paddle-board--buttons--narrow">
+          <button className="btn btn-dark" onClick={this.toggleFullScreen.bind(this)}> 
+            <FontAwesomeIcon icon={faExpandArrowsAlt } /> 
+          </button>
+            {startStopGameBtn}
+          <button className="btn btn-dark" onClick={this.resetBestScore.bind(this)}>  
+            <FontAwesomeIcon icon={faRedoAlt} /> 
+          </button>
+          <Link to="/tictactoe"> 
+            <button className="btn btn-dark"> <FontAwesomeIcon icon={faExchangeAlt}/> </button>
+          </Link>
+        </div>
+     </div>
+    </>
     );
   } 
 }

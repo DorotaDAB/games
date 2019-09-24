@@ -20,13 +20,17 @@
       "gameLevel": " Game speed:",
       "paddleGameSettings": "Difficulty level",
       "difficultyLevel": "Difficulty: ",
-      "default": "Default: for change go to Settings",
+      "defaultdifficultyLevel": "Default: for change go to Settings",
       "gobalSettings": " Global settings",
       "pongSettings": " Pong settings",
       "Beginner": "Beginner",
       "Regular": "Regular",
       "Advanced": "Advanced",
-      "Crazy": "Crazy"
+      "Crazy": "Crazy",
+      "altPong": "Play Pong game",
+      "altTicTacToe": "Play Tic Tac Toe game",
+      "altPolish": "Change language to polish",
+      "altEnglish": "Change language to english"
     },
   "pl": {
     "homePage": "Strona główna",
@@ -49,13 +53,17 @@
     "gameLevel": " Prędkość gry: ",
     "paddleGameSettings": "Poziom trudnosci",
     "difficultyLevel": "Poziom trudności: ",
-    "default": "Domyślny: zmiana możliwa w Ustawieniach",
+    "defaultdifficultyLevel": "Domyślny: zmiana możliwa w Ustawieniach",
     "gobalSettings": " Ustawienia ogólne",
     "pongSettings": " Odbijanie piłki: ustawienia",
     "Beginner": "Łatwy",
     "Regular": "Średni",
     "Advanced": "Trudny",
-    "Crazy": "Szalony"
+    "Crazy": "Szalony",
+    "altPong": "Zagraj w Odbijanie piłki",
+    "altTicTacToe": "Zagraj w kółko i krzyżyk",
+    "altPolish": "Zmień język na polski",
+    "altEnglish": "Zmień język na angielski"
   }
 }
 

@@ -27,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background: lightslategray;
+  background: #778899;
   font-size: 7vw;  
 }
 
@@ -54,7 +54,7 @@
 }
 
 .game-board--field:hover {
-  background: gainsboro;
+  background: #dcdcdc;
 }
 
 .game-board--field:after {
