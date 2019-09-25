@@ -38,17 +38,6 @@ class PaddleGame extends React.Component {
     this.updateMousePosition = this.updateMousePosition.bind(this);
   }
 
-  componentDidMount() {
-    this.game.gameBoard = this.refs.canvas;
-    this.game.context = this.refs.canvas.getContext('2d');
-    this.printElements();
-    this.refs.canvas.addEventListener('mousemove', this.updateMousePosition)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.gameRefreshInterval);
-  }
-
   updateDirection() {
     this.game.ballX += this.game.ballSpeedX;
     this.game.ballY += this.game.ballSpeedY;
@@ -56,13 +45,15 @@ class PaddleGame extends React.Component {
     if(this.game.ballX < 0) {
       this.game.ballSpeedX *= -1;
     }
+
     if(this.game.ballX > this.game.gameBoard.width) {
       this.game.ballSpeedX *= -1;
     }
+
     if(this.game.ballY < 0) {
       this.game.ballSpeedY *= -1;
     }
-
+    
     if (this.isBallOutside()) {
       this.resetGameSpeed();
       this.resetBall();

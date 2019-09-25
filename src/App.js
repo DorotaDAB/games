@@ -38,16 +38,24 @@ class App extends React.Component {
           <div className="container--wide-container">
             <Nav variant="tabs" defaultActiveKey="/">
               <Nav.Item>
-                <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /> {lang[localStorage.getItem('lang')].homePage}</Link>
+                <Link className="nav-link" to="/"><FontAwesomeIcon icon={faHome} /> 
+                  {lang[localStorage.getItem('lang')].homePage}
+                </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /> {lang[localStorage.getItem('lang')].ticTacToe}</Link>
+                <Link className="nav-link" to="/tictactoe"> <FontAwesomeIcon icon={faSlackHash} /> 
+                  {lang[localStorage.getItem('lang')].ticTacToe}
+                </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /> {lang[localStorage.getItem('lang')].paddleGame} </Link>
+                <Link className="nav-link" to="/paddle"> <FontAwesomeIcon icon={faTableTennis} /> 
+                  {lang[localStorage.getItem('lang')].paddleGame} 
+                </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /> {lang[localStorage.getItem('lang')].settings} </Link>
+                <Link className="nav-link" to="/settings"> <FontAwesomeIcon icon={faCog} /> 
+                  {lang[localStorage.getItem('lang')].settings} 
+                </Link>
               </Nav.Item>
             </Nav>
           </div>
