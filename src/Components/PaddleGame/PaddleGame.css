@@ -8,9 +8,11 @@
   color: #4B515D;
   font-size: 1.5vw;
 }
+
 .paddle-board--container-score {
    margin-right: 1%;
  }
+
 .paddle-board--full-screen {
   position: fixed;
   top: 0;
