@@ -36,7 +36,7 @@ class PaddleGame extends React.Component {
     this.setGameLevel = this.setGameLevel.bind(this);
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
-    this.closeFullScrnOnEcscape = this.closeFullScrnOnEsc.bind(this);
+    this.closeFullScrnOnEsc = this.closeFullScrnOnEsc.bind(this);
   }
 
   componentDidMount() {
@@ -188,7 +188,7 @@ class PaddleGame extends React.Component {
     this.setState({isFullScreen: !this.state.isFullScreen});
   }
  
- closeFullScrnOnEsc(event) {
+  closeFullScrnOnEsc(event) {
     if(event.keyCode === 27) {
       this.setState({isFullScreen: false});
     }
