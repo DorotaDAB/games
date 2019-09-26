@@ -36,17 +36,20 @@ class PaddleGame extends React.Component {
     this.setGameLevel = this.setGameLevel.bind(this);
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
+    this.closeFullScrnOnEcscape = this.closeFullScrnOnEsc.bind(this);
   }
 
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;
     this.game.context = this.refs.canvas.getContext('2d');
     this.printElements();
-    this.refs.canvas.addEventListener('mousemove', this.updateMousePosition)
+    this.refs.canvas.addEventListener('mousemove', this.updateMousePosition);
+    document.addEventListener("keydown", this.closeFullScrnOnEsc, false);
   }
 
   componentWillUnmount() {
     clearInterval(this.state.gameRefreshInterval);
+    document.addEventListener("keydown", this.closeFullScrnOnEsc, false);
   }
 
   updateDirection() {
@@ -184,6 +187,12 @@ class PaddleGame extends React.Component {
   toggleFullScreen() {
     this.setState({isFullScreen: !this.state.isFullScreen});
   }
+ 
+ closeFullScrnOnEsc(event) {
+    if(event.keyCode === 27) {
+      this.setState({isFullScreen: false});
+    }
+  }
 
   startStopGame() {
     if (!this.state.gameRefreshInterval) {
@@ -219,7 +228,7 @@ class PaddleGame extends React.Component {
 
       <div className="start-stop--narrow">
         <button className="btn btn-dark" onClick={ this.startStopGame.bind(this) }> 
-        <FontAwesomeIcon icon={faPlay} /></button>
+        <FontAwesomeIcon icon={faPause} /></button>
       </div>
       <div className="start-stop--wide">
         <button className="btn btn-dark" onClick={ this.startStopGame.bind(this) }> 
