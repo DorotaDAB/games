@@ -11,14 +11,20 @@ class HomePage extends React.Component {
     <div className="games-choice">
       <h1> {lang[localStorage.getItem('lang')].homePageHeading} </h1>
       <div className="games-img"> 
-        <Link to="/tictactoe"> 
-          <img src={TicTacToeImg} 
-          alt={lang[localStorage.getItem('lang')].altTicTacToe}/>
-        </Link>
-        <Link to="/paddle"> 
-          <img src={PongImg} 
-          alt={lang[localStorage.getItem('lang')].altTicTacToe}/> 
-        </Link>
+        <div>
+          <p> {lang[localStorage.getItem('lang')].playTicTacToe} </p>
+          <Link to="/tictactoe"> 
+            <img src={TicTacToeImg} 
+            alt={lang[localStorage.getItem('lang')].altTicTacToe}/>
+          </Link>
+        </div>
+          <div>
+          <p> {lang[localStorage.getItem('lang')].playPong} </p>
+          <Link to="/paddle"> 
+            <img src={PongImg} 
+            alt={lang[localStorage.getItem('lang')].altTicTacToe}/> 
+          </Link>
+        </div>
       </div>
     </div>
   )}
