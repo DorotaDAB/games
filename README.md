@@ -1,6 +1,6 @@
 # games
 
-Application contains various browser-based games.
+Single Page Application contains various browser-based games.
 
 * Used tools: React.js, Bootstrap, HTML canvas.
 * Online demo: https://dorotadab.github.io/games
